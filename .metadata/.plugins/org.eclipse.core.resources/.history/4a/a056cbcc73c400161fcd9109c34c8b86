@@ -1,0 +1,21 @@
+<div class=" text-center" ">
+	<h1>User Page</h1>
+
+	<table class="table" >
+		<tr>
+			<th>UserId</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Mobile</th>
+			<th>Role</th>
+		</tr>
+		<tr ng-repeat="user in users">
+			<td>{{ctrl.user.userId}}</td>
+			<td>{{ctrl.user.name}}</td>
+			<td>{{ctrl.user.email}}</td>
+			<td>{{ctrl.user.mobile}}</td>
+			<td>{{ctrl.user.roleId}}</td>
+		</tr>
+	</table>
+
+</div>

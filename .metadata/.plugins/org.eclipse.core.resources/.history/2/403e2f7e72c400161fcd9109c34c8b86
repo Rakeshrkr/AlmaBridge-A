@@ -1,0 +1,29 @@
+
+angular.module('almaApp').controller(
+		'userController',
+		 [
+		  '$scope',
+		  'userService',
+		  '$location',
+		  '$rootScope',
+		  
+		  '$http',
+		  function($scope,userService,$location,$rootScope,$http) {
+			  console.log("Inside userController");
+			  var self = this;
+			  self.user = {errorCode:"",errorMsg:"",userId:"",name:"",password:"",email:"",address:"",mobile:"",roleId:"",reason:"",isOnline:"",status:""};
+			  
+			  self.users = [] ;
+			  
+			  self.getAllUsers = function(){
+				  console.log("in fetch all users..")
+				 userService
+				       		.getAllUsers()
+				       		then(
+				       				function(d){self.users =d;},
+				       				function(errResponse){console.error("Error while getting users")})
+				       				
+			  }
+			  //self.getAllBlogs();
+			  	$scope.message = 'Look! I am a User page.';
+}]);

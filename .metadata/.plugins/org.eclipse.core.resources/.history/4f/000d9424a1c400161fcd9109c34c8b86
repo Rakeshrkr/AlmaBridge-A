@@ -1,0 +1,26 @@
+<div class=" text-center" ng-controllers="registerController ">
+	<h1>User Page</h1>
+
+	<table class="table">
+		<tr>
+			<th>Event No</th>
+			<th>Event Location</th>
+			<th>Event Date</th>
+			<th>Description</th>
+			
+		</tr>
+		<tr ng-repeat="event  in events">
+			<td>{{event.eventId}}</td>
+			<td>{{event.eventLocation}}</td>
+			<td>{{event.eventDate}}</td>
+			<td>{{event.description}}</td>
+			
+			<td><a href="" ng-click="deleteEvent(event.eventId)">Delete </a></td>
+			<td><a href="" ng-click="editEvent(event.eventId)">Edit</a></td>
+
+			
+
+		</tr>
+	</table>
+
+</div>

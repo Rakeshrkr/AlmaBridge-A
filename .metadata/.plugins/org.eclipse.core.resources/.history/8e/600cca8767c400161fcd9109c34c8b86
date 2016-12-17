@@ -1,0 +1,21 @@
+<div class=" text-center">
+	<h1>User Page</h1>
+
+	<table class="table" ng-controllers="userController ">
+		<tr>
+			<th>UserId</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Mobile</th>
+			<th>Role</th>
+		</tr>
+		<tr ng-repeat="user in users">
+			<td>{ {uCont.user.userId}}</td>
+			<td>{ {uCont.user.name}}</td>
+			<td>{ {uCont.user.email}}</td>
+			<td>{ {uCont.user.mobile}}</td>
+			<td>{ {uCont.user.roleId}}</td>
+		</tr>
+	</table>
+
+</div>
