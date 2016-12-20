@@ -1,7 +1,4 @@
-/*almaApp.controller('registerController', function($scope) {
-$scope.message = 'Look! I am a register page.';
 
-});*/
 
 'use strict'
 angular.module('almaApp').controller(
@@ -23,7 +20,11 @@ angular.module('almaApp').controller(
 			    self.edit = edit;
 			    self.remove = remove;
 			    self.reset = reset;
-			 
+			    self.login = login;
+			    self.logout = logout;
+			    
+			    
+			    
 			    console.log("self initialized.."+self.user.name);
 			    fetchAllUsers();
 			 
@@ -43,13 +44,74 @@ angular.module('almaApp').controller(
 			    }
 			    
 			 
+			    function authenticate(user){
+			        registerService.authenticateCurrentUser(user)
+			            .then(
+			            function(d) {
+			                if((d.userId==user.userId)&&(d.password == user.password)&&(d.status == 'Y')){
+			                	console.log('Login Successfull! Current User-id: ',$rootScope.currentUserId);
+			                	window.alert('Welcome '+ d.name + ' ! You are logged in successfully ');
+			                	$rootScope.isLogged = true;
+			                
+			                	
+			                	
+			                	
+			                } else{
+			                	
+			                	console.log('Login Unsuccessfull! Please login again with valid credentials');
+			                	window.alert('Login Failed! Please try again!');
+			                	
+			                }
+			            },
+			            
+			            function(errResponse){
+			                console.error('Error while authenticating Current users');
+			            }
+			        );
+			    }
+			    
+			     function login(){
+			    	/*console.log('Authenticating Current User...', $rootScope.currentUser.userId);*/
+			    	for(var i=0;i<self.users.length;i++){
+			    		
+			    		if(self.users[i].userId == self.user.userId){
+			    			/*$rootScope.currentUser.userId = $rootScope.currentUser.userId;*/
+			    			
+			    			$rootScope.currentUserName = self.users[i].name;
+			    			$rootScope.currentUserId = self.users[i].userId;
+			    			$rootScope.currentUserRoleId = self.users[i].roleId ;
+			    			
+			    			$location.path('/');
+			        	}
+			    	}
+			    	console.log('Authenticating Current User.... with id ' + self.user.userId);
+			    	console.log('Authenticating Current User.... with pwd ' + self.user.password);
+			    	authenticate(self.user);
+			    	
+			    	
+			    	
+			    };
+			    
+			    function logout(){
+			    	$rootScope.currentUserName = '';
+			    	$rootScope.currentUserId = '';
+			    	$rootScope.currentUserRoleId = '';
+			    	
+			    	$rootScope.storage.isLogged = false;
+			    	/*$rootScope.isUserLoggedIn = $sessionStorage.isLogged;*/
+			    	
+			    	/*$rootScope.isUserAdmin = $sessionStorage.isAdmin;*/
+					$location.path('/');
+					console.log('You are logged out successfully ');
+					window.alert('You are logged out successfully ');
+			    };
 			    
 			    $scope.makeAdmin = function makeAdmin(userId){
 			        registerService.makeAdmin(userId)
 			            .then(
 			            function(d) {
 			                /*$scope.currentBlog = d;*/
-			                $location.path('/user');
+			                /*$location.path('/user');*/
 			                window.alert("New Admin is created with userId "+userId);
 			                console.log("new admin with id created..."+userId ) ;
 			                /*$rootScope.currentBlog = d; 
@@ -99,7 +161,10 @@ angular.module('almaApp').controller(
 			    	 console.log('Inside create user...');
 			    	registerService.createUser(user)
 			            .then(
+			       
+			           
 			            fetchAllUsers,
+			            $location.path('/login'),
 			            function(errResponse){
 			                console.error('Error while creating User');
 			            }

@@ -27,6 +27,7 @@ public class JobDetailsController {
 	
 	@RequestMapping(value = "/postJobDetails", method = RequestMethod.POST)
 	public boolean addNewJobDetails(@RequestBody JobDetails jobDetails) {
+			/*jobDetails.setJobId(3);*/
 
 		if (jobDetailsDAO.saveJobDetails(jobDetails)) {
 			

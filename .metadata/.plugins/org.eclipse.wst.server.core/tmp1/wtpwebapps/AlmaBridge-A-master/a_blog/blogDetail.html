@@ -1,4 +1,3 @@
-
 <div class="container">
 	<div class="row row-content" ng-controller="blogController">
 		<div class="col-xs-12">
@@ -25,93 +24,96 @@
 
 		</div>
 
+		<div ng-controller="blogcommentController as bcc">
+			<div ng-repeat="c in bcc.comments">
+				<div class="col-xs-9 col-xs-offset-1">
+					<blockquote class="blockquote">
+						<p class="mb-0">{{c.rating}} Stars</p>
+						<p class="mb-0">{{c.description}}</p>
+						<footer>
+							{{c.userId}}, <cite title="Source Title">{{c.commentDate}}</cite>
+						</footer>
+					</blockquote>
+				</div>
+			</div>
 
-		<div ng-repeat="c in comments">
 			<div class="col-xs-9 col-xs-offset-1">
-				<blockquote class="blockquote">
-					<p class="mb-0">{{c.rating}} Stars</p>
-					<p class="mb-0">{{c.comment}}</p>
-					<footer>
-						{{c.author}}, <cite title="Source Title">{{c.date|date}}</cite>
-					</footer>
-				</blockquote>
+				<div
+					ng-show="!commentForm.$invalid && !commentForm.description.$pristine ">
+
+					<blockquote class="blockquote">
+						<p class="mb-0">{{bcc.comment.rating}} Stars</p>
+						<p class="mb-0">{{bcc.comment.description}}</p>
+						<footer>
+							{{bcc.comment.userId}}, <cite title="Source Title">{{bcc.comment.commentDate}}</cite>
+						</footer>
+					</blockquote>
+
+
+				</div>
+
+				<form class="form-horizontal" name="commentForm"
+					ng-submit="bcc.submit()" novalidate>
+					<!-- Text input-->
+
+					<div class="form-group"
+						ng-class="{ 'has-error' : commentForm.userId.$error.required && !commentForm.userId.$pristine }">
+						<!-- <label class="col-md-4 control-label" for="userId">Your
+							Name</label> -->
+						<div class="col-md-6">
+							<input id="userId" name="userId" type="hidden" placeholder="userId"
+								class="form-control input-md" ng-model="bcc.comment.userId"
+								required> <span
+								ng-show="commentForm.userId.$error.required && !commentForm.userId.$pristine"
+								class="help-block">Your name is required.</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="rating">Rating</label>
+						<div class="col-md-6">
+							<label class="radio-inline"> <input type="radio"
+								name="optradio" ng-model="bcc.comment.rating" value="1">1
+							</label> <label class="radio-inline"> <input type="radio"
+								name="optradio" ng-model="bcc.comment.rating" value="2">2
+							</label> <label class="radio-inline"> <input type="radio"
+								name="optradio" ng-model="bcc.comment.rating" value="3">3
+							</label> <label class="radio-inline"> <input type="radio"
+								name="optradio" ng-model="bcc.comment.rating" value="4">4
+							</label> <label class="radio-inline"> <input type="radio"
+								name="optradio" ng-model="bcc.comment.rating" value="5">5
+							</label>
+						</div>
+					</div>
+
+
+					<div class="form-group"
+						ng-class="{ 'has-error' : commentForm.description.$error.required && !commentForm.description.$pristine }">
+						<label class="col-md-4 control-label" for="description">Commnet</label>
+						<div class="col-md-6">
+							<textarea id="description" name="description" type="text"
+								placeholder="Type your comment" class="form-control input-md"
+								ng-model="bcc.comment.description" required></textarea>
+							<span
+								ng-show="commentForm.description.$error.required && !commentForm.description.$pristine"
+								class="help-block">Your comment is required.</span>
+
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label" for=""></label>
+						<div class="col-md-2">
+							<button type="submit"
+								class="btn btn-primary btn-md form-control "
+								ng-disabled="commentForm.$invalid">Submit</button>
+
+						</div>
+					</div>
+
+				</form>
+
 			</div>
 		</div>
 
-		<div class="col-xs-9 col-xs-offset-1">
-			<div
-				ng-show="!blogCommentForm.$invalid && !blogCommentForm.comment.$pristine ">
-
-				<blockquote class="blockquote">
-					<p class="mb-0">{{blogComment.rating}} Stars</p>
-					<p class="mb-0">{{blogComment.comment}}</p>
-					<footer>
-						{{blogComment.author}}, <cite title="Source Title">{{blogComment.date|date}}</cite>
-					</footer>
-				</blockquote>
-
-
-			</div>
-
-			<form class="form-horizontal" name="blogCommentForm"
-				ng-submit="addComment()" novalidate>
-				<!-- Text input-->
-
-				<div class="form-group"
-					ng-class="{ 'has-error' : blogCommentForm.author.$error.required && !blogCommentForm.author.$pristine }">
-					<label class="col-md-4 control-label" for="author">Your
-						Name</label>
-					<div class="col-md-6">
-						<input id="author" name="author" type="text" placeholder="author"
-							class="form-control input-md" ng-model="blogComment.author"
-							required> <span
-							ng-show="blogCommentForm.author.$error.required && !blogCommentForm.author.$pristine"
-							class="help-block">Your name is required.</span>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="rating">Rating</label>
-					<div class="col-md-6">
-						<label class="radio-inline"> <input type="radio"
-							name="optradio" ng-model="blogComment.rating" value="1">1
-						</label> <label class="radio-inline"> <input type="radio"
-							name="optradio" ng-model="blogComment.rating" value="2">2
-						</label> <label class="radio-inline"> <input type="radio"
-							name="optradio" ng-model="blogComment.rating" value="3">3
-						</label> <label class="radio-inline"> <input type="radio"
-							name="optradio" ng-model="blogComment.rating" value="4">4
-						</label> <label class="radio-inline"> <input type="radio"
-							name="optradio" ng-model="blogComment.rating" value="5">5
-						</label>
-					</div>
-				</div>
-
-				
-				<div class="form-group"
-					ng-class="{ 'has-error' : blogCommentForm.comment.$error.required && !blogCommentForm.comment.$pristine }">
-					<label class="col-md-4 control-label" for="comment">Commnet</label>
-					<div class="col-md-6">
-						<textarea id="comment" name="comment" type="text"
-							placeholder="Type your comment" class="form-control input-md"
-							ng-model="blogComment.comment" required></textarea>
-						<span
-							ng-show="blogCommentForm.comment.$error.required && !blogCommentForm.comment.$pristine"
-							class="help-block">Your comment is required.</span>
-
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-4 control-label" for=""></label>
-					<div class="col-md-2">
-						<button type="submit" class="btn btn-primary btn-md form-control "
-							ng-disabled="blogCommentForm.$invalid">Submit</button>
-
-					</div>
-				</div>
-
-			</form>
-
-		</div>
 	</div>
 </div>

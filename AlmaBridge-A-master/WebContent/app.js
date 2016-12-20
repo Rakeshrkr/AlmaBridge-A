@@ -50,8 +50,13 @@ var almaApp = angular.module('almaApp',['ngRoute']);
 	
 	// route for the login page
 	.when('/login', {
-		templateUrl : 'a_login/login.html',
-		controller  : 'loginController'
+		templateUrl : 'a_user/login.html',
+		controller  : 'registerController'
+	})
+	
+	.when('/logout', {
+		templateUrl : 'a_home/home.html',
+		controller  : 'homeController'
 	})
 	//route for users page
 	

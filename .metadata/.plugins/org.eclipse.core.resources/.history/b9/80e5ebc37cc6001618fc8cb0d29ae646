@@ -1,0 +1,53 @@
+package edu.almabridge.daoImpl;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import edu.almabridge.dao.BlogDAO;
+import edu.almabridge.dao.Blog_CommentDAO;
+import edu.almabridge.model.Blog;
+import edu.almabridge.model.Blog_Comment;
+@Repository("Blog_CommentDAO")
+public class Blog_CommentDAOImpl implements Blog_CommentDAO  {
+	
+	@Autowired
+	SessionFactory sessionFactory;
+
+	@Autowired
+	Blog blog ;
+	
+	@Autowired
+	BlogDAO blogDAO ;
+
+	@Override
+	public boolean saveComment(Blog_Comment comment) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateComment(Blog_Comment comment) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void deleteComment(int commentId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getComment(String userId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getComments(int blogId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

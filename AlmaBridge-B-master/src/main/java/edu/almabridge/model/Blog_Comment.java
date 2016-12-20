@@ -1,14 +1,36 @@
 package edu.almabridge.model;
 
-public class Blog_Comment {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table
+@Component
+public class Blog_Comment extends ErrorModel {
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "commentId_seq")
+	@SequenceGenerator(name = "commentId_seq", sequenceName = "comment_seq",allocationSize = 1)
 	private int commentId ;
 	private int blogId ;
 	private String description ;
 	private String userId ;
+	private int rating ;
 	private String commentDate ;
-	private int likes ;
-	private int dislikes ;
 	
+	
+	
+	public int getRating() {
+		return rating;
+	}
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
 	public int getCommentId() {
 		return commentId;
 	}
@@ -39,18 +61,7 @@ public class Blog_Comment {
 	public void setCommentDate(String commentDate) {
 		this.commentDate = commentDate;
 	}
-	public int getLikes() {
-		return likes;
-	}
-	public void setLikes(int likes) {
-		this.likes = likes;
-	}
-	public int getDislikes() {
-		return dislikes;
-	}
-	public void setDislikes(int dislikes) {
-		this.dislikes = dislikes;
-	}
+
 	
 	
 

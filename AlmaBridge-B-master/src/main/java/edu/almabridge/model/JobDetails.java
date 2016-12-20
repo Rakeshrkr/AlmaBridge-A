@@ -1,7 +1,10 @@
 package edu.almabridge.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -11,6 +14,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class JobDetails extends ErrorModel{
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "jobId_seq")
+	@SequenceGenerator(name = "jobId_seq", sequenceName = "Job_seq",allocationSize = 1)
 	private int jobId ;
 	private long salary;
 	private String description ;

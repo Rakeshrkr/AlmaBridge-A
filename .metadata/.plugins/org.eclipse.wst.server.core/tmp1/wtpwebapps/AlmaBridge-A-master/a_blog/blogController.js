@@ -9,10 +9,19 @@ angular.module('almaApp').controller(
 		  '$http',
 		  function($scope,blogService,$location,$rootScope,$http) {
 			  console.log("Inside blogController");
-			  /*var self = this;*/
-			  $scope.blog = {errorCode:"",errorMsg:"",blogId:null,title:"",description:"",userId:"",blogDate:"",noOfViews:"",status:"",reason:"",likes:"",dislikes:""};
 			  
-			 /* $scope.blogs = [] ;*/
+			  var self = this;
+			  $scope.blog = {errorCode:"",errorMsg:"",blogId:null,title:"",description:"",userId:$rootScope.currentUserId,blogDate:new Date().toDateString(),noOfViews:"28",status:"N",reason:"NA",likes:"30",dislikes:"40"};
+			  self.blog = {errorCode:"",errorMsg:"",blogId:null,title:"",description:"",userId:$rootScope.currentUserId,blogDate:new Date().toDateString(),noOfViews:"28",status:"N",reason:"NA",likes:"30",dislikes:"40"};
+			  self.blogs=[];
+			  $scope.blogs =[];
+			  
+			    self.submit = submit;
+			    self.edit = edit;
+			    self.remove = remove;
+			    self.reset = reset;
+			    
+			    console.log("self initialized.."+self.blog.description);
 			  
 			  getAllBlogs();
 			  
@@ -42,8 +51,77 @@ angular.module('almaApp').controller(
 			            }
 			        );
 			    }
+			    function createBlog(blog){
+			    	 console.log('Inside create blog...');
+			    	blogService.createBlog(blog)
+			            .then(
+			       
+			           
+			            getAllBlogs,
+			           /* $location.path('/login'),*/
+			            function(errResponse){
+			                console.error('Error while creating blog');
+			            }
+			        );
+			    }
+			   $scope.updateBlog = function updateBlog(blog, blogId){
+			    	blogService.updateBlog(blog, blogId)
+			            .then(
+			            getAllBlogs,
+			            function(errResponse){
+			                console.error('Error while updating blog');
+			            }
+			        );
+			    }
+			   
+			   $scope.deleteBlog = function deleteBlog(blogId){
+			    	blogService.deleteBlog(blogId)
+			            .then(
+			            getAllBlogs,
+			            function(errResponse){
+			                console.error('Error while deleting Blog');
+			            }
+			        );
+			    }
+			   
+			    function submit() {
+			    	 console.log('Inside submit...');
+			    	 console.log('User name', self.blog.description);
+			       /* if(self.user.userId===null){*/
+			            createBlog(self.blog);
+		/*	        }else{
+			            updateUser(self.user, self.user.userId);
+			            console.log('User updated with id ', self.user.userId);
+			        }*/
+			        reset();
+			    }
+			   
+			   function edit(id){
+			        console.log('id to be edited', id);
+			        for(var i = 0; i < self.blogs.length; i++){
+			            if(self.blogs[i].blogId === id) {
+			                self.blog = angular.copy(self.blogs[i]);
+			                break;
+			            }
+			        }
+			    }
 			 
-			  	$scope.message = 'Look! I am a Blog page.';
+			    function remove(id){
+			        console.log('id to be deleted', id);
+			        if(self.blog.blogId === id) {//clean form if the user to be deleted is shown there.
+			            reset();
+			        }
+			        deleteBlog(id);
+			    }
+			 
+			 
+			    function reset(){
+			    	self.blog = {errorCode:"",errorMsg:"",blogId:null,title:"",description:"",userId:$rootScope.currentUserId,blogDate:new Date().toDateString(),noOfViews:"28",status:"N",reason:"NA",likes:"30",dislikes:"40"};
+			    	$scope.blog = {errorCode:"",errorMsg:"",blogId:null,title:"",description:"",userId:$rootScope.currentUserId,blogDate:new Date().toDateString(),noOfViews:"28",status:"N",reason:"NA",likes:"30",dislikes:"40"};
+			        $scope.blogForm.$setPristine(); //reset Form
+			    }
+			   
+ /*			  	$scope.message = 'Look! I am a Blog page.';
 			  	$scope.blog = 'Look! I am a abc page.';
 			  	$scope.comments= [
                            {
@@ -76,7 +154,7 @@ angular.module('almaApp').controller(
                                author:"25 Cent",
                                date:"2011-12-02T17:57:28.556094Z"
                            }    
-                        ];
+                        ];*/
                     
 			  	
 			  	

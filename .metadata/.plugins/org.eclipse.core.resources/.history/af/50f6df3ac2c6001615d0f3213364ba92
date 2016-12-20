@@ -1,0 +1,141 @@
+/*angular.module('almaApp').controller('blogCommentController',['$scope',function($scope){
+            var blogComment = {
+                
+                rating:'5',
+                comment:'',
+                author:'',
+                date:new Date().toISOString()
+            }
+            
+            $scope.blogComment = blogComment ;
+            $scope.addComment = function(){
+                $scope.blog.comments.push(blogComment);
+                $scope.blogCommentForm.$setPristine();
+                $scope.blogComment={
+                author:'',
+                rating:5,
+                comment:'',
+                date:new Date().toISOString()
+                    
+                    
+                }
+                
+                console.log(this.blogComment);
+                
+            };
+        }])*/
+
+
+
+'use strict'
+angular.module('almaApp').controller(
+		'blogCommentController',
+		 [
+		  '$scope',
+		  'blogCommentService',
+		  '$location',
+		  '$rootScope',
+		  '$http',
+		  function($scope,blogCommentService,$location,$rootScope,$http) {
+			  console.log("Inside blogCommentController ");
+
+			  var self = this;
+			    self.comment={errorCode:'',errorMsg:'',commentId:'',blogId:'',description:'',userId:'',rating:'',commentDate:''};
+			    self.comments=[];
+			 
+			    self.submit = submit;
+			    self.edit = edit;
+			    self.remove = remove;
+			    self.reset = reset;
+			    
+			    
+			    
+			    
+			    console.log("self initialized.."+self.comment.description);
+			    fetchAllUsers();
+			 
+			    function fetchAllComments(){
+			        blogCommentService.fetchAllComments()
+			            .then(
+			       
+			            function(d) {
+			            	 console.log("fetching comments and asigning to self.."+d.length);
+			                self.comments = d;
+			                $scope.comments =d ;
+			            },
+			            function(errResponse){
+			                console.error('Error while fetching Comments');
+			            }
+			        );
+			    }
+			    
+			 
+			    function createComment(comment){
+			    	 console.log('Inside create comment...');
+			    	blogCommentService.createComment(comment)
+			            .then(
+			            fetchAllComments,
+			            $location.path('/blogDetail'),
+			            function(errResponse){
+			                console.error('Error while creating Comment');
+			            }
+			        );
+			    }
+			 
+			    function updateComment(comment, commentId){
+			    	blogCommentService.updateComment(comment, commentId)
+			            .then(
+			            fetchAllComments,
+			            function(errResponse){
+			                console.error('Error while updating Comment');
+			            }
+			        );
+			    }
+			 
+			    function deleteComment(id){
+			    	registerService.deleteUser(id)
+			            .then(
+			            fetchAllUsers,
+			            function(errResponse){
+			                console.error('Error while deleting User');
+			            }
+			        );
+			    }
+			 
+			    function submit() {
+			    	 console.log('Inside submit...');
+			    	 console.log('User name', self.user.name);
+			       /* if(self.user.userId===null){*/
+			            createUser(self.user);
+		/*	        }else{
+			            updateUser(self.user, self.user.userId);
+			            console.log('User updated with id ', self.user.userId);
+			        }*/
+			        reset();
+			    }
+			 
+			    function edit(id){
+			        console.log('id to be edited', id);
+			        for(var i = 0; i < self.users.length; i++){
+			            if(self.users[i].id === id) {
+			                self.user = angular.copy(self.users[i]);
+			                break;
+			            }
+			        }
+			    }
+			 
+			    function remove(id){
+			        console.log('id to be deleted', id);
+			        if(self.user.id === id) {//clean form if the user to be deleted is shown there.
+			            reset();
+			        }
+			        deleteUser(id);
+			    }
+			 
+			 
+			    function reset(){
+			    	self.user={errorCode:'',errorMsg:'',userId:null,name:'',password:'',email:'',address:'',mobile:'',roleId:'',reason:'',isOnline:'',status:''};
+			        $scope.form.$setPristine(); //reset Form
+			    }
+			  	
+}]);

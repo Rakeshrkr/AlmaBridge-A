@@ -50,6 +50,9 @@
 	<bean id="BlogDAO" class="edu.almabridge.daoImpl.BlogDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<bean id="Blog_CommentDAO" class="edu.almabridge.daoImpl.Blog_CommentDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	<bean id="FriendDAO" class="edu.almabridge.daoImpl.FriendDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>

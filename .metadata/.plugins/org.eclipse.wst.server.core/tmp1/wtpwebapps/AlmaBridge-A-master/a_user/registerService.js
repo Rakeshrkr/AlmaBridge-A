@@ -1,6 +1,6 @@
 'use strict'
 almaApp.service('registerService',['$http','$q','$rootScope',function($http,$q,$rootScope){
-	var REST_SERVICE_URI = 'http://localhost:8200/AlmaBridgeB' 
+	var REST_SERVICE_URI = 'http://localhost:7200/AlmaBridgeB' 
 	
 		
 		var factory = {
@@ -10,7 +10,8 @@ almaApp.service('registerService',['$http','$q','$rootScope',function($http,$q,$
 	        deleteUser:deleteUser,
 	        makeAdmin:makeAdmin,
 	        approve:approve,
-	        reject:reject
+	        reject:reject,
+	        authenticateCurrentUser:authenticateCurrentUser,
 	    };
 
 	 return factory;
@@ -35,6 +36,7 @@ almaApp.service('registerService',['$http','$q','$rootScope',function($http,$q,$
 	        $http.post(REST_SERVICE_URI+'/registerUser', user)
 	            .then(
 	            function (response) {
+	            	 window.alert("You are registered successfully !");
 	                deferred.resolve(response.data);
 	            },
 	            function(errResponse){
@@ -45,6 +47,20 @@ almaApp.service('registerService',['$http','$q','$rootScope',function($http,$q,$
 	        return deferred.promise;
 	    }
 	 
+	    function authenticateCurrentUser(user) {
+	        var deferred = $q.defer();
+	        $http.post(REST_SERVICE_URI+'/login',user)
+	            .then(
+	            function (response) {
+	                deferred.resolve(response.data);
+	            },
+	            function(errResponse){
+	                console.error('Error while fetching Users');
+	                deferred.reject(errResponse);
+	            }
+	        );
+	        return deferred.promise;
+	    }
 	 
 	    function updateUser(user, id) {
 	        var deferred = $q.defer();

@@ -1,0 +1,53 @@
+package edu.almabridge.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table
+@Component
+public class Blog_Comment extends ErrorModel {
+	private int commentId ;
+	private int blogId ;
+	private String description ;
+	private String userId ;
+	private String commentDate ;
+	
+	
+	public int getCommentId() {
+		return commentId;
+	}
+	public void setCommentId(int commentId) {
+		this.commentId = commentId;
+	}
+	public int getBlogId() {
+		return blogId;
+	}
+	public void setBlogId(int blogId) {
+		this.blogId = blogId;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public String getCommentDate() {
+		return commentDate;
+	}
+	public void setCommentDate(String commentDate) {
+		this.commentDate = commentDate;
+	}
+
+	
+	
+
+}
