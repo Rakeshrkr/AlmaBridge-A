@@ -1,0 +1,12 @@
+package org.example;
+
+abstract public class SuperClass {
+	int employeeId ;
+	String employeeName ;
+	String employeeDepartment ;
+	
+	void display(){
+		
+	}
+
+}

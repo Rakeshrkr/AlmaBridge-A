@@ -2,28 +2,30 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="form" key="selection"/>
+		<item value="alert" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="form"/>
-			<item value="jobLocation"/>
-			<item value="event"/>
+			<item value="alert"/>
+			<item value="fetchAllFriends"/>
+			<item value="fetchAllComments"/>
 			<item value="eC"/>
+			<item value="eventLocation"/>
+			<item value="eventLoca"/>
+			<item value="e"/>
 			<item value="eventForm"/>
-			<item value="user"/>
-			<item value="async"/>
-			<item value="async:!0"/>
 		</list>
 		<list key="replacehistory">
+			<item value="bC"/>
+			<item value="title"/>
+			<item value="blogForm"/>
+			<item value="blogCommentc"/>
 			<item value="LoginForm"/>
 			<item value="location"/>
 			<item value="job"/>
 			<item value="jC"/>
-			<item value="jobForm"/>
-			<item value="eventForm"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

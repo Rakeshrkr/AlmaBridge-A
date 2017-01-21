@@ -51,7 +51,8 @@ public class FriendDAOImpl implements FriendDAO{
 		    session = sessionFactory.openSession();
 		}
 		
-		String hql = "from Friend where userId ="+"'"+userId + "' and status = '"+"Y'";
+		String hql = "from Friend where ( userId ="+"'"+userId + "'" + " or friendId ="+"'"+userId + "'" + " )and status = '"+"Y'";
+		System.out.println("friend retrieving query ="+ hql);
 		Query query = session.createQuery(hql);
 		
 		return query.list();
@@ -67,7 +68,7 @@ public class FriendDAOImpl implements FriendDAO{
 		} catch (HibernateException e) {
 		    session = sessionFactory.openSession();
 		}
-		String hql = "from Friend where friendId ="+"'"+userId + "' and status = '"+"N'";
+		String hql = "from Friend where ( userId ="+"'"+userId + "'" + " or friendId ="+"'"+userId + "'" + " )and status = '"+"N'";
 		Query query = session.createQuery(hql);
 		
 		return query.list();
@@ -132,22 +133,22 @@ public class FriendDAOImpl implements FriendDAO{
 	}
 	//Tested
 	@Transactional
-	public void deleteFriend(String userId, String friendId) {
+	public void rejectFriend(String userId, String friendId) {
 		Session session;
-
+		System.out.println("Inside detele frinedddd");
 		try {
 		    session = sessionFactory.getCurrentSession();
 		} catch (HibernateException e) {
 		    session = sessionFactory.openSession();
 		}
 		
-		session.delete(getFriendToChangeStatus(friendId,userId));
+		session.delete(getFriendToChangeStatus(userId,friendId));
 		
 		
 	}
 	//Tested
 	@Transactional
-	public void removeFriend(String userId, String friendId) {
+	public void unFriend(String userId, String friendId) {
 		Session session;
 
 		try {

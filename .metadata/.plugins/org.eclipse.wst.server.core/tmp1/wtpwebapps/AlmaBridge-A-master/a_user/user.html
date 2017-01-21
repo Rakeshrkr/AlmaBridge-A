@@ -10,6 +10,7 @@
 			<th>Role</th>
 			<th>Approve/Reject</th>
 			<th>Make admin</th>
+			<th>send Friend Request</th>
 		</tr>
 		<tr ng-repeat="user in users">
 			<td>{{user.userId}}</td>
@@ -20,6 +21,7 @@
 			<td><a href="" ng-click="approve(user.userId)">Approve</a><a
 				href="" ng-click="reject(user.userId)" style="color: red">Reject</a></td>
 			<td><a href="" ng-click="makeAdmin(user.userId)">Make admin</a></td>
+			<td><a href="" ng-click="addFriendX(user.userId)">Send Friend Request</a></td>
 
 			
 

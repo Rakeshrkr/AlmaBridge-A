@@ -29,7 +29,7 @@ angular.module('almaApp').controller(
 			    fetchAllComments();
 			 
 			    function fetchAllComments(){
-			        blogcommentService.fetchAllComments()
+			        blogcommentService.fetchAllCommentsOnBlog($rootScope.currentBlogId)
 			            .then(
 			       
 			            function(d) {

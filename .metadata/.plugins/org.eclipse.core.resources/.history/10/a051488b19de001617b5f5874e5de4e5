@@ -1,0 +1,15 @@
+package org.example;
+
+abstract public class SuperClass {
+	int employeeId ;
+	String employeeName ;
+	String employeeDepartment ;
+	
+	public  void display(){
+		System.out.println("Name of the employee is :-" + employeeName);
+		System.out.println("Id of the employee is :-" + employeeId);
+		System.out.println("Department of the employee is :-" + employeeDepartment);
+		System.out.println("Age of the employee is :-" + employeeAge);
+		System.out.println("Salary of the employee is :-" + employeeSalary);
+	}
+}

@@ -26,7 +26,7 @@
 
 		<div ng-controller="blogcommentController as bcc">
 			<div ng-repeat="c in bcc.comments">
-				<div class="col-xs-9 col-xs-offset-1">
+				<div class="col-xs-9 col-xs-offset-1" ng-hide="c.rating==0" >
 					<blockquote class="blockquote">
 						<p class="mb-0">{{c.rating}} Stars</p>
 						<p class="mb-0">{{c.description}}</p>

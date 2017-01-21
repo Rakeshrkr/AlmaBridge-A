@@ -11,8 +11,8 @@ public interface FriendDAO {
 	public Friend getFriendToChangeStatus(String userId, String friendId);
 	public boolean saveFriend(Friend friend);
 	public boolean updateFriend(Friend friend);
-	public void deleteFriend(String userId,String friendId);
-	public void removeFriend(String userId, String friendId);
+	public void rejectFriend(String userId,String friendId);
+	public void unFriend(String userId, String friendId);
 	
 	public boolean isRequestAlreadySent(String userId,String friendId);
 	public boolean isAlreadyAccepted(String userId,String friendId);

@@ -1,5 +1,0 @@
-package edu.almabridge.config;
-
-public class CORSFilter {
-
-}

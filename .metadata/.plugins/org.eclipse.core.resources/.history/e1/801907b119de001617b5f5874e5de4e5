@@ -1,0 +1,10 @@
+package org.example;
+
+public class Inheritance extends SuperClass{
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

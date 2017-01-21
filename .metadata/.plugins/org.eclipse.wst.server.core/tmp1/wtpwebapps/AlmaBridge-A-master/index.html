@@ -16,11 +16,13 @@
 <script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="resources/angular/angular.min.js"></script>
 <script src="resources/angular-route/angular-route.min.js"></script>
+<!-- <script src="resources/angular-cookies/angular-ngCookies.js"></script> -->
 <link href="resources/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet">
 <link href="resources/styles/bootstrap-social.css" rel="stylesheet">
 <link href="resources/styles/mystyles.css" rel="stylesheet">
-
+<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+ -->
 <!-- Use it when net is working -------------------------------------------------------------------------------->
 <!--   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
@@ -98,11 +100,11 @@
 					</a></li>
 				</ul>
 				<ul class="nav navbar-nav pull-right">
-					<li><a href="" ng-click="logout()"> <span
+					<li ng-hide ="$rootScope.isLogged"><a href="" ng-click="logout()"> <span
 							class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
 							Logout
 					</a></li>
-					<li><a href="#login"> <span
+					<li ng-hide ="$rootScope.isLogged"><a href="#login"> <span
 							class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
 							Login
 					</a></li>

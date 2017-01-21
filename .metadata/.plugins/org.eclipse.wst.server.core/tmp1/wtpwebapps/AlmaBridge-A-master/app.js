@@ -1,5 +1,5 @@
 var almaApp = angular.module('almaApp',['ngRoute']);
-   almaApp.config(function($routeProvider){
+almaApp.config(["$routeProvider",function($routeProvider) {
 	$routeProvider
 	
 	// route for the home page
@@ -73,7 +73,7 @@ var almaApp = angular.module('almaApp',['ngRoute']);
 	})
 	
 	.otherwise({redirectTo:'/'});
-});
+}]);
 
 
 

@@ -143,6 +143,7 @@ public class UserDetailsController {
 			if (userDetails.getStatus() == 'Y') {
 				userDetails.setErrorCode("200");
 				userDetails.setErrorMsg("You are logged in sussessfully!");
+				System.out.println("you are logged in with userid "+ userDetails.getUserId());
 				httpSession.setAttribute("loggedInUserId", userDetails.getUserId());
 				userDetails.setIsOnline('Y');
 				userDetailsDAO.updateUser(userDetails);
