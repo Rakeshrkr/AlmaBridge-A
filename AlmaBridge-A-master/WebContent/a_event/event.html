@@ -59,7 +59,7 @@
 			<th>Event Location</th>
 			<th>Event Date</th>
 			<th>Description</th>
-			<th>Delete</th>
+			<th ng-show = "currentUserRoleId == 'Role_Admin'">Delete</th>
 			<!-- <th>Edit</th> -->
 
 		</tr>
@@ -69,7 +69,7 @@
 			<td>{{event.eventDate}}</td>
 			<td>{{event.description}}</td>
 
-			<td><a href="" ng-click="deleteEvent(event.eventId)">Delete
+			<td ng-show = "currentUserRoleId == 'Role_Admin'"><a href="" ng-click="deleteEvent(event.eventId)">Delete
 			</a></td>
 			<!-- <td><a href="" ng-click="edit(event.eventId)">Edit</a></td> -->
 

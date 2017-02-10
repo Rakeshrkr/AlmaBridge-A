@@ -56,7 +56,7 @@ almaApp.config(["$routeProvider",function($routeProvider) {
 	
 	.when('/logout', {
 		templateUrl : 'a_home/home.html',
-		controller  : 'homeController'
+		controller  : 'registerController'
 	})
 	//route for users page
 	
@@ -70,6 +70,12 @@ almaApp.config(["$routeProvider",function($routeProvider) {
 	.when('/contact', {
 		templateUrl : 'a_contact/contact.html',
 		controller  : 'contactController'
+	})
+	
+	// route for the chat 
+	.when('/chat', {
+		templateUrl : 'a_chat/chat.html',
+		controller  : 'ChatController'
 	})
 	
 	.otherwise({redirectTo:'/'});

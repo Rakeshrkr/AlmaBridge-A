@@ -42,25 +42,9 @@ angular
 							$rootScope.currentUserName;
 							$rootScope.currentUserId;
 							$rootScope.currentUserRoleId;
-							/* $rootScope.storage; */
-
-							/*
-							 * $rootScope.storage.isLogged = false ;
-							 * $rootScope.storage.isAdmin = false ;
-							 * $rootScope.storage.currentUserName = '';
-							 * $rootScope.storage.currentUserId = '';
-							 * $rootScope.storage.currentUserRoleId = '';
-							 */
-
-							/*
-							 * $rootScope.storage = $sessionStorage.$default({
-							 * isLogged : false, isAdmin : false,
-							 * currentUserName : '', currentUserId : '',
-							 * currentUserRoleId : ''
-							 * 
-							 * });
-							 */
-
+							$rootScope.isLogged ;
+							console.log('is user logged in = '
+									+ $rootScope.isLogged);
 							$scope.addFriendX = function addFriendX(userId) {
 								console.log("Inside addFriendXX");
 								var testCtrl1ViewModel = $scope.$new();
@@ -81,6 +65,10 @@ angular
 													console
 															.log("fetching users and asigning to self.."
 																	+ d.length);
+													console
+													.log(
+															'Login Successfull! Current User-role Id:'+
+															$rootScope.currentUserRoleId);
 													self.users = d;
 													$scope.users = d;
 												},
@@ -102,7 +90,11 @@ angular
 																.log(
 																		'Login Successfull! Current User-id: ',
 																		$rootScope.currentUserId);
-														$rootScope.isLogged = true;
+														console
+																.log(
+																		'Login Successfull! Current User-role Id: ',
+																		$rootScope.currentUserRoleId);
+
 														window
 																.alert('Welcome '
 																		+ d.name
@@ -111,14 +103,21 @@ angular
 														 * $rootScope.storage.isLogged =
 														 * true;
 														 */
+														$rootScope.isLogged = true;
 
 														$rootScope.currentUserName = d.name;
 														$rootScope.currentUserId = d.userId;
 														$rootScope.currentUserRoleId = d.roleId;
+														
+														// $rootScope.isNotLogged
+														// = false ;
+														console
+														.log('is user logged in = '
+																+ $rootScope.isLogged);
 
 													} else {
 														$rootScope.isLogged = false;
-														$rootScope.isLogged = false;
+														
 
 														$rootScope.currentUserName = '';
 														$rootScope.currentUserId = '';
@@ -138,30 +137,14 @@ angular
 							}
 
 							function login() {
-								/*
-								 * console.log('Authenticating Current User...',
-								 * $rootScope.currentUser.userId);
-								 */
+
 								for (var i = 0; i < self.users.length; i++) {
 
 									if (self.users[i].userId == self.user.userId) {
-										/*
-										 * $rootScope.currentUser.userId =
-										 * $rootScope.currentUser.userId;
-										 */
 
 										$rootScope.currentUserName = self.users[i].name;
 										$rootScope.currentUserId = self.users[i].userId;
 										$rootScope.currentUserRoleId = self.users[i].roleId;
-
-										/*
-										 * $rootScope.storage.currentUserName =
-										 * self.users[i].name;
-										 * $rootScope.storage.currentUserId =
-										 * self.users[i].userId;
-										 * $rootScope.storage.currentUserRoleId =
-										 * self.users[i].roleId ;
-										 */
 
 										$location.path('/');
 									}
@@ -173,6 +156,7 @@ angular
 										.log('Authenticating Current User.... with pwd '
 												+ self.user.password);
 								authenticate(self.user);
+								/*$rootScope.isLogged = true;*/
 
 							}
 							;
@@ -183,17 +167,12 @@ angular
 								$rootScope.currentUserRoleId = '';
 
 								$rootScope.isLogged = false;
-
-								/*
-								 * $rootScope.storage.isLogged = false;
-								 * 
-								 * $rootScope.storage.currentUserName = '';
-								 * $rootScope.storage.currentUserId = '';
-								 * $rootScope.storage.currentUserRoleId = '';
-								 */
-
+								console.log('is user logged in '
+										+ $rootScope.isLogged);
 								$location.path('/');
-								console.log('You are logged out successfully ');
+								console
+										.log('You are logged out successfully in registerController ');
+								
 								window
 										.alert('You are logged out successfully ');
 							}

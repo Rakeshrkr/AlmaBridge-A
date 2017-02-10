@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html ng-app="almaApp">
+<html ng-app="almaApp" >
 
 <head>
 <meta charset="utf-8">
@@ -16,6 +16,10 @@
 <script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="resources/angular/angular.min.js"></script>
 <script src="resources/angular-route/angular-route.min.js"></script>
+
+<script src="resources/sockjs/sockjs.js"></script>
+<script src="resources/stomp/stomp.js"></script>
+<script src="resources/lodash/lodash.js"></script>
 <!-- <script src="resources/angular-cookies/angular-ngCookies.js"></script> -->
 <link href="resources/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet">
@@ -71,12 +75,15 @@
 <script src="a_user/registerController.js"></script>
 <script src="a_user/registerService.js"></script>
 
+<script src="a_chat/ChatController.js"></script>
+<script src="a_chat/ChatService.js"></script>
+
 </head>
 
-<body ng-controller="homeController">
+<body ng-controller="registerController as rC">
 
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container">
+		<div class="container" >
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar">
@@ -99,21 +106,22 @@
 							About
 					</a></li>
 				</ul>
+				<!-- ng-hide = "rC.isLogged == 'true'" -->
 				<ul class="nav navbar-nav pull-right">
-					<li ng-hide ="$rootScope.isLogged"><a href="" ng-click="logout()"> <span
+					<li ng-show = "isLogged"><a href="" ng-click="rC.logout()"> <span
 							class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
 							Logout
 					</a></li>
-					<li ng-hide ="$rootScope.isLogged"><a href="#login"> <span
+					<li ng-hide = "isLogged"><a href="#login" > <span
 							class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
 							Login
 					</a></li>
-					<li><a href="#register"> <span
+					<li ng-hide = "isLogged"><a href="#register"> <span
 							class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 							Register
 					</a></li>
 
-					<li><a href="#user"> <i class="fa fa-envelope-o"></i>
+					<li ng-show = "isLogged"><a href="#user"> <i class="fa fa-envelope-o"></i>
 							Users
 					</a></li>
 
@@ -125,7 +133,7 @@
 							class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
 							Event
 					</a></li>
-					<li><a href="#friend"><span class="fa fa-users"
+					<li ng-show = "isLogged"><a href="#friend"><span class="fa fa-users"
 							aria-hidden="true"></span> Friend </a></li>
 					<li><a href="#blog"> <i class="fa fa-envelope-o"></i> Blog
 					</a></li>
@@ -184,7 +192,7 @@
 						Mumbai<br> <i class="fa fa-phone"></i>: +912 1234 5678<br>
 						<i class="fa fa-fax"></i>: +912 8765 4321<br> <i
 							class="fa fa-envelope"></i>: <a href="jrakesh.iitb@gmail.com">
-							iitb.ac.in</a>
+							jrakesh.iitb.ac.in</a>
 					</address>
 				</div>
 				<div class="col-xs-12 col-sm-4">

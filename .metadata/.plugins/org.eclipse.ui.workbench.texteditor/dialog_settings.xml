@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="alert" key="selection"/>
+		<item value="Friend 123==" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="Friend 123=="/>
+			<item value="Friend 123 inside method"/>
 			<item value="alert"/>
 			<item value="fetchAllFriends"/>
 			<item value="fetchAllComments"/>
 			<item value="eC"/>
 			<item value="eventLocation"/>
 			<item value="eventLoca"/>
-			<item value="e"/>
-			<item value="eventForm"/>
 		</list>
 		<list key="replacehistory">
 			<item value="bC"/>

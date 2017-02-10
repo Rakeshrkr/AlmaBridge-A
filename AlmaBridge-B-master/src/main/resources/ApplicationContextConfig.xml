@@ -8,7 +8,7 @@
  http://www.springframework.org/schema/context
  http://www.springframework.org/schema/context/spring-context-4.0.xsd
  http://www.springframework.org/schema/tx
- http://www.springframework.org/schema/tx/spring-tx.xsd"> 
+ http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -56,22 +56,19 @@
 	<bean id="FriendDAO" class="edu.almabridge.daoImpl.FriendDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
-	<!-- <bean id="userDetails" class="edu.almabridge.model.UserDetails">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	<bean id="jobDetails" class="edu.almabridge.model.JobDetails">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	<bean id="jAF" class="edu.almabridge.model.JAF">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	<bean id="event" class="edu.almabridge.model.Event">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	<bean id="blog" class="edu.almabridge.model.Blog">
+
+<!-- 	<bean id="Chat" class="edu.almabridge.model.Chat">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean> -->
+
+	<!-- <bean id="userDetails" class="edu.almabridge.model.UserDetails"> <property 
+		name="sessionFactory" ref="sessionFactory" /> </bean> <bean id="jobDetails" 
+		class="edu.almabridge.model.JobDetails"> <property name="sessionFactory" 
+		ref="sessionFactory" /> </bean> <bean id="jAF" class="edu.almabridge.model.JAF"> 
+		<property name="sessionFactory" ref="sessionFactory" /> </bean> <bean id="event" 
+		class="edu.almabridge.model.Event"> <property name="sessionFactory" ref="sessionFactory" 
+		/> </bean> <bean id="blog" class="edu.almabridge.model.Blog"> <property name="sessionFactory" 
+		ref="sessionFactory" /> </bean> -->
 	<tx:annotation-driven />
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">

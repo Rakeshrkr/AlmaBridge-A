@@ -89,7 +89,7 @@
 			<th>Location</th>
 			<th>Qualification</th>
 			<th>Seletion Proccess</th>
-			<th>Delete</th>
+			<th ng-show = "currentUserRoleId == 'Role_Admin'">Delete</th>
 			<!-- <th>Edit</th> -->
 
 		</tr>
@@ -103,7 +103,7 @@
 			<td>{{job.slectionProcess}}</td>
 			
 
-			<td><a href="" ng-click="deleteJob(job.jobId)">Delete
+			<td ng-show = "currentUserRoleId == 'Role_Admin'"><a href="" ng-click="deleteJob(job.jobId)">Delete
 			</a></td>
 			<!-- <td><a href="" ng-click="edit(event.eventId)">Edit</a></td> -->
 
