@@ -1,6 +1,6 @@
 'use strict'
 almaApp.service('blogcommentService',['$http','$q','$rootScope',function($http,$q,$rootScope){
-	var BASE_URL = 'http://localhost:7200/AlmaBridgeB' 
+	var BASE_URL = 'http://localhost:6200/AlmaBridgeB' 
 	
 		
 		var factory = {

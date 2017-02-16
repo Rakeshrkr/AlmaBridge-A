@@ -1,4 +1,4 @@
-almaApp.service("ChatService",function($q,$timeout){
+almaApp.service("ChatService",function($q,$timeout,$rootScope){
 	var service = {},listener = $q.defer(),
 	socket ={
 		client: null,
@@ -8,7 +8,7 @@ almaApp.service("ChatService",function($q,$timeout){
 	messageIds = [] ;
 	
 	service.RECONNECT_TIMEOUT = 30000 ;
-	service.SOCKET_URL = "http://localhost:9200/AlmaBridgeB/chat" ;
+	service.SOCKET_URL = "http://localhost:6200/AlmaBridgeB/chat" ;
 	service.CHAT_TOPIC = "/topic/message" ;
 	service.CHAT_BROKER = "/app/chat" ;
 	
@@ -25,7 +25,9 @@ almaApp.service("ChatService",function($q,$timeout){
 			priority : 9
 		},JSON.stringify({
 			message:message,
+			fid:$rootScope.currentUserName,
 			id:id
+			
 		}));
 		messageIds.push(id);
 	};
@@ -41,6 +43,7 @@ almaApp.service("ChatService",function($q,$timeout){
 		console.log("getMessage in chat service..")
 		var message = JSON.parse(data);out = {};
 		out.message = message.message ;
+		out.fid = message.fid ;
 		out.time = new Date(message.time)
 		return out ;
 	};

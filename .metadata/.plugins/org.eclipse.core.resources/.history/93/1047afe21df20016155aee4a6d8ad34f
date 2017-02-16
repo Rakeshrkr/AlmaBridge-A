@@ -1,0 +1,39 @@
+package edu.almabridge.model;
+
+public class Message {
+	private String message ;
+	private int id ;
+	private String fid ;
+	
+	
+	public String getFid() {
+		return fid;
+	}
+	public void setFid(String fid) {
+		this.fid = fid;
+	}
+	public Message() {
+		
+	}
+	public Message(String message, int id,String fid) {
+		
+		this.message = message;
+		this.id = id;
+		this.fid = fid ;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
+
+}

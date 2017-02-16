@@ -1,6 +1,6 @@
 'use strict'
 almaApp.service('jobService',['$http','$q','$rootScope',function($http,$q,$rootScope){
-	var REST_SERVICE_URI = 'http://localhost:7200/AlmaBridgeB' 
+	var REST_SERVICE_URI = 'http://localhost:6200/AlmaBridgeB' 
 	
 		
 		var factory = {

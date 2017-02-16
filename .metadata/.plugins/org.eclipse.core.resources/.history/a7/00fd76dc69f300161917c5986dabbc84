@@ -1,0 +1,16 @@
+package org.example;
+
+import java.util.Scanner;
+
+public class ABCD {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Choose of the below options:-");
+		System.out.println("1. Play Game");
+		System.out.println("2. View Instructions");
+		System.out.println("3. Exit Game");
+
+	}
+
+}

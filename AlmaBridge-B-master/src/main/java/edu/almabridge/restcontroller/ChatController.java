@@ -17,6 +17,7 @@ public class ChatController {
 	 @MessageMapping("/chat")
 	  @SendTo("/topic/message")
 	  public OutputMessage sendMessage(Message message) {
+		 System.out.println("in backend chat controller "+ message.getFid());
 	    return new OutputMessage(message, new Date());
 	  }
 }
